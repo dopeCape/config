@@ -8,9 +8,12 @@
 :set mouse=a
 
 
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 
+Plug 'nvim-lua/plenary.nvim'
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+
 Plug 'https://github.com/PhilRunninger/nerdtree-visual-selection'
 Plug 'https://github.com/tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'https://github.com/github/copilot.vim'
@@ -22,13 +25,16 @@ Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'https://github.com/lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
-Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
-Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors'`'`
 Plug 'tribela/vim-transparent'
 Plug 'Rigellute/rigel'
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
 set encoding=UTF-8
 set clipboard^=unnamed,unnamedplus
 call plug#end()
@@ -38,7 +44,7 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-a> :TransparentEnable<CR>
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
-nnoremap <C-u> :q <CR>
+nnoremap <C-q> :q <CR>
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -63,7 +69,6 @@ let g:rainbow_active = 1
 " --- Just Some Notes ---
 " :PlugClean :PlugInstall :UpdateRemotePlugins
 syntax enable
-colorscheme rigel
 " :CocInstall coc-python
 " :CocInstall coc-clangd
 " :CocInstall coc-snippets
@@ -88,3 +93,4 @@ autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.org
 
 
 noremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+nnoremap <C-b> :Telescope find_files<CR>
