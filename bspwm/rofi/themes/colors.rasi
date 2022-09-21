@@ -1,0 +1,9 @@
+* {
+    background:			#022A38;
+    foreground:			#93c7c7;
+    selected:			#36688D;
+    highlight:			#39976E;
+    urgent:				#5D4C70;
+    on:					#8B3678;
+    off:				#5D4C70;
+}
